@@ -1,82 +1,58 @@
-import React, { useState } from 'react';
-import PieChart from './PieChart';
-import { LiaUserEditSolid } from 'react-icons/lia';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { IoMdClose } from 'react-icons/io';
-import { FaPlusCircle } from 'react-icons/fa';
-import ConfirmationModal from './ConfirmationModal';
+import React, { useEffect, useState } from "react";
+import PieChart from "./PieChart";
+import { LiaUserEditSolid } from "react-icons/lia";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { IoMdClose } from "react-icons/io";
+import { FaPlusCircle } from "react-icons/fa";
+import ConfirmationModal from "./ConfirmationModal";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import axios from "axios";
 
 const ManageUsers = () => {
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      name: 'VIKAS KUMAR THAKUR',
-      email: 'Test@testing.com',
-      phone: '9876543210',
-      experience: 'Test Experience',
-      education: 'MCA',
-      skills: 'Frontend Engineer',
-    },
-    {
-      id: 2,
-      name: 'VIKAS KUMAR THAKUR',
-      email: 'Test@testing.com',
-      phone: '9876543210',
-      experience: 'Test Experience',
-      education: 'MCA',
-      skills: 'Frontend Engineer',
-    },
-    {
-      id: 3,
-      name: 'VIKAS KUMAR THAKUR',
-      email: 'Test@testing.com',
-      phone: '9876543210',
-      experience: 'Test Experience',
-      education: 'MCA',
-      skills: 'Frontend Engineer',
-    },
-  ]);
+  const [users, setUsers] = useState([]);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState({});
   const [confirmationOpen, setConfirmationOpen] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
 
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/users");
+      console.log(response.data.data);
+      setUsers(response.data.data);
+    } catch (error) {
+      console.log(error, "fetch user error");
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   const handleAddUser = () => {
     setModalOpen(true);
     setModalData({});
-
   };
 
   const handleEditUser = (user) => {
     setModalOpen(true);
     setModalData(user);
-
   };
 
   const handleDeleteUser = (id) => {
     setUserToDelete(id);
     setConfirmationOpen(true);
-
   };
 
-  const confirmDeleteUser = () => {
-    setUsers(users.filter((user) => user.id !== userToDelete));
+  const confirmDeleteUser = async () => {
+    const response = await axios.delete(
+      `http://localhost:5000/api/users/${userToDelete}`
+    );
+    fetchUsers();
     setConfirmationOpen(false);
     toast.success("User Deleted!");
-  };
-
-  const handleSaveUser = (data) => {
-    if (data.id) {
-      setUsers(users.map((user) => (user.id === data.id ? data : user)));
-    } else {
-      setUsers([...users, { id: users.length + 1, ...data }]);
-    }
-    toast.success("User Added!");
-    setModalOpen(false);
   };
 
   const Modal = () => {
@@ -85,16 +61,35 @@ const ManageUsers = () => {
     const handleChange = (e) => {
       setData({ ...data, [e.target.name]: e.target.value });
     };
+    const handleSaveUser = async (data) => {
+      if (data._id) {
+        const response = await axios.put(
+          `http://localhost:5000/api/users/${data._id}`,
+          data
+        );
+        fetchUsers();
+        // setUsers(users.map((user) => (user._id === data._id ? response?.data?.data : user)));
+      } else {
+        const response = await axios.post(
+          `http://localhost:5000/api/users`,
+          data
+        );
+        fetchUsers();
+        // setUsers([...users, response?.data?.data]);
+      }
+      toast.success("User Added!");
+      setModalOpen(false);
+    };
     return (
       <div
         className={`modal bg-[#03030391] fixed top-0 left-0 w-full h-full flex justify-center items-center ${
-          modalOpen ? 'open' : ''
+          modalOpen ? "open" : ""
         }`}
       >
         <div className="modal-content bg-white w-[80%] md:max-w-[600px] rounded-xl p-3">
           <div className="modal-header border-b-[1px] border-[#19594D] flex justify-between items-center">
-            <span className="text-md font-semibold">
-              {data.id ? 'Edit User' : 'Add User'}
+            <span className="text-2xl font-semibold">
+              {data.id ? "Edit User" : "Add User"}
             </span>
             <span
               className="text-md font-semibold cursor-pointer"
@@ -110,8 +105,8 @@ const ManageUsers = () => {
                   <label>Name:</label>
                   <input
                     type="text"
-                    name="name"
-                    value={data.name}
+                    name="username"
+                    value={data.username}
                     onChange={handleChange}
                     className="py-1 px-3 w-full outline-none bg-[#636262] text-white"
                     required
@@ -193,10 +188,10 @@ const ManageUsers = () => {
     );
   };
   const currentDate = new Date();
-  const formattedDate = currentDate.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  const formattedDate = currentDate.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
   return (
     <div className="flex items-center justify-between gap-3">
@@ -263,17 +258,15 @@ const ManageUsers = () => {
                 </thead>
                 <tbody>
                   {users.map((user) => (
-                    <tr key={user.id} className="text-base text-[14px] bg-[]">
+                    <tr key={user?._id} className="text-base text-[14px] bg-[]">
                       <td className="text-black font-semibold pt-3">
-                        {user.name}
+                        {user?.username}
                       </td>
-                      <td className="text-gray-600 pt-3">{user.email}</td>
-                      <td className="text-gray-600 pt-3">{user.phone}</td>
-                      <td className="text-gray-600 pt-3">
-                        {user.experience}
-                      </td>
-                      <td className="text-gray-600 pt-3">{user.education}</td>
-                      <td className="text-gray-600 pt-3">{user.skills}</td>
+                      <td className="text-gray-600 pt-3">{user?.email}</td>
+                      <td className="text-gray-600 pt-3">{user?.phone}</td>
+                      <td className="text-gray-600 pt-3">{user?.experience}</td>
+                      <td className="text-gray-600 pt-3">{user?.education}</td>
+                      <td className="text-gray-600 pt-3">{user?.skills}</td>
                       <td>
                         <div className="flex items-center justify-start gap-2">
                           <LiaUserEditSolid
@@ -284,7 +277,7 @@ const ManageUsers = () => {
                           <RiDeleteBin6Line
                             className="text-[16px] hover:text-[#19594D] cursor-pointer"
                             title="Delete User"
-                            onClick={() => handleDeleteUser(user.id)}
+                            onClick={() => handleDeleteUser(user?._id)}
                           />
                         </div>
                       </td>
