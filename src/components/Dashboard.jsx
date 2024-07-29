@@ -13,17 +13,15 @@ const Dashboard = () => {
             </div>
             </div>
             <div className="bg-gray-300 p-3 flex flex-wrap justify-start gap-2 items-center">
-                <div className="bg-[#19594D] p-2 rounded-md min-w-52"></div>
-                <div className="bg-[#19594D] p-2 rounded-md min-w-52"></div>
-                <div className="bg-[#19594D] p-2 rounded-md min-w-52"></div>
-                <div className="bg-[#19594D] p-2 rounded-md min-w-52"></div>
-                <div className="bg-[#19594D] p-2 rounded-md min-w-52"></div>
-                <div className="bg-[#19594D] p-2 rounded-md min-w-52"></div>
-                <div className="bg-[#19594D] p-2 rounded-md min-w-52"></div>
-                <div className="bg-[#19594D] p-2 rounded-md min-w-52"></div>
-                <div className="bg-[#19594D] p-2 rounded-md min-w-52"></div>
-                <div className="bg-[#19594D] p-2 rounded-md min-w-52"></div>
-
+                <div className="bg-[#19594D] p-2 rounded-md min-w-[48%]"></div>
+                <div className="bg-[#19594D] p-2 rounded-md min-w-[48%]"></div>
+                <div className="bg-[#19594D] p-2 rounded-md min-w-[48%]"></div>
+                <div className="bg-[#19594D] p-2 rounded-md min-w-[48%]"></div>
+                <div className="bg-[#19594D] p-2 rounded-md min-w-[48%]"></div>
+                <div className="bg-[#19594D] p-2 rounded-md min-w-[48%]"></div>
+                <div className="bg-[#19594D] p-2 rounded-md min-w-[48%]"></div>
+                <div className="bg-[#19594D] p-2 rounded-md min-w-[48%]"></div>
+                <div className="bg-[#19594D] p-2 rounded-md flex-1 min-w-[48%]"></div>
             </div>
         </div>
         <div className="bg-white p-2 rounded-md flex-1">
