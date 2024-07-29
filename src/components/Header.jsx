@@ -4,7 +4,7 @@ const Header = () => {
 
   return (
     <>
-     <div className="bg-[#262626] py-3 px-5 flex items-center justify-between shadow-md">
+     <div className="bg-[#262626] py-3 px-5 flex items-center justify-between shadow-md fixed top-0 w-full">
             <div className="text-white vt323-regular px-5 text-2xl">
               User Management
             </div>

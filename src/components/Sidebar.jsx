@@ -11,7 +11,7 @@ const Sidebar = () => {
     );
 
     return (
-        <aside className="bg-[#262626] py-3 px-5 box-shadow-new w-[15%]" style={{ minHeight: `calc(100vh - 56px - 32px)` }}>
+        <aside className="bg-[#262626] py-3 px-5 box-shadow-new w-[15%] fixed top-14" style={{ minHeight: `calc(100vh - 50px - 30px)` }}>
             <div style={{ minHeight: "inherit" }}>
                 <ul className="flex flex-col gap-2" style={{ minHeight: "inherit" }}>
                     <NavLink
