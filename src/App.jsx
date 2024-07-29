@@ -1,18 +1,21 @@
-import React from 'react'; // Add this line
-
-import './App.css'
-import Header from './components/Header';
+import React from 'react'; 
+import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainContainer from './components/MainContainer';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Dashboard from './components/Dashboard';
+import ManageUsers from './components/ManageUsers';
+import Statics from './components/Statics';
 
 function App() {
-
   return (
-   <>
-   <div className='bg-[#262626] min-h-screen'>
-    <MainContainer/>
-    </div>
-    </>
-  )
+    <Router>
+      <Header />
+        <MainContainer />
+        <Footer />
+    </Router>
+  );
 }
 
-export default App
+export default App;
