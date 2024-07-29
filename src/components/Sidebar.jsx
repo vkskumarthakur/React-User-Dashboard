@@ -16,7 +16,7 @@ const Sidebar = () => {
                 <ul className="flex flex-col gap-2" style={{ minHeight: "inherit" }}>
                     <NavLink
                         to="/dashboard"
-                        className={({ isActive }) => `flex items-center justify-start gap-2 transition-all delay-50 rounded-sm py-1 px-2 group transition-colors duration-100 ${getActiveClass(isActive)}`}
+                        className={({ isActive }) => `flex items-center justify-start gap-2 transition-all delay-50 rounded-sm py-1 px-2 group transition-colors duration-100 hover:bg-[#19594D] ${getActiveClass(isActive)}`}
                     >
                         {({ isActive }) => (
                             <>
@@ -27,7 +27,7 @@ const Sidebar = () => {
                     </NavLink>
                     <NavLink
                         to="/manage-users"
-                        className={({ isActive }) => `flex items-center justify-start gap-2 transition-all delay-50 rounded-sm py-1 px-2 group transition-colors duration-100 ${getActiveClass(isActive)}`}
+                        className={({ isActive }) => `flex items-center justify-start gap-2 transition-all delay-50 rounded-sm py-1 px-2 group transition-colors duration-100 hover:bg-[#19594D] ${getActiveClass(isActive)}`}
                     >
                         {({ isActive }) => (
                             <>
@@ -38,7 +38,7 @@ const Sidebar = () => {
                     </NavLink>
                     <NavLink
                         to="/statics"
-                        className={({ isActive }) => `flex items-center justify-start gap-2 transition-all delay-50 rounded-sm py-1 px-2 group transition-colors duration-100 ${getActiveClass(isActive)}`}
+                        className={({ isActive }) => `flex items-center justify-start gap-2 transition-all delay-50 rounded-sm py-1 px-2 group transition-colors duration-100 hover:bg-[#19594D] ${getActiveClass(isActive)}`}
                     >
                         {({ isActive }) => (
                             <>

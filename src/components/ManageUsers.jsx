@@ -68,7 +68,7 @@ const Dashboard = () => {
                     <td className="text-gray-600 pt-3">Test@testing.com</td>
                     <td className="text-gray-600 pt-3">9876543210</td>
                     <td className="text-gray-600 pt-3">Test Experience</td>
-                    <td className="text-gray-600 pt-3">B.Tech</td>
+                    <td className="text-gray-600 pt-3">MCA</td>
                     <td className="text-gray-600 pt-3">Frontend Engineer </td>
                     <td>
                       <div className="flex items-center justify-start gap-2">
@@ -82,7 +82,7 @@ const Dashboard = () => {
                     <td className="text-gray-600 pt-3">Test@testing.com</td>
                     <td className="text-gray-600 pt-3">9876543210</td>
                     <td className="text-gray-600 pt-3">Test Experience</td>
-                    <td className="text-gray-600 pt-3">B.Tech</td>
+                    <td className="text-gray-600 pt-3">MCA</td>
                     <td className="text-gray-600 pt-3">Frontend Engineer </td>
                     <td>
                       <div className="flex items-center justify-start gap-2">
@@ -96,7 +96,7 @@ const Dashboard = () => {
                     <td className="text-gray-600 pt-3">Test@testing.com</td>
                     <td className="text-gray-600 pt-3">9876543210</td>
                     <td className="text-gray-600 pt-3">Test Experience</td>
-                    <td className="text-gray-600 pt-3">B.Tech</td>
+                    <td className="text-gray-600 pt-3">MCA</td>
                     <td className="text-gray-600 pt-3">Frontend Engineer </td>
                     <td>
                       <div className="flex items-center justify-start gap-2">

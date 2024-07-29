@@ -15,7 +15,7 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="p-3 flex flex-wrap justify-between gap-2 items-stretch">
-                    <div className="bg-[#FEE4CB] rounded-2xl py-2 px-5 min-w-[32.5%]">
+                    <div className="bg-[#FEE4CB] rounded-2xl py-2 px-5 flex-1">
                         <div className="flex justify-between items-ceter">
                         <div className="flex flex-col justify-center gap-2">
                             <span className="font-semibold text-3xl">40</span>
