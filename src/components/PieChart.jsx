@@ -11,7 +11,7 @@ import {
 // Sample data
 const data = [
   { name: 'IT', value: 30 },
-  { name: 'Non-IT', value: 10 },
+  { name: 'Others', value: 10 },
 ];
 
 // Define custom active shape

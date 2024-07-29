@@ -26,7 +26,7 @@ const Dashboard = () => {
                             <div className="flex justify-center items-center gap-1">
                                 <span className="font-normal text-sm">IT</span>
                                 <span className="bg-[#19594D] rounded-full p-1"></span>
-                                <span className="font-normal text-sm">Non-IT</span>
+                                <span className="font-normal text-sm">Others</span>
                                 <span className="bg-white rounded-full p-1"></span>
                             </div>
                         </div>
