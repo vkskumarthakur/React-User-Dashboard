@@ -208,7 +208,7 @@ const ManageUsers = () => {
           <div className="bg-[#19594d30] rounded-2xl py-2 px-5">
             <div className="flex justify-between items-center">
               <div className="flex flex-col justify-center gap-2">
-                <span className="font-semibold text-3xl">40</span>
+                <span className="font-semibold text-3xl">{users.length}</span>
                 <span className="font-semibold text-sm">Users</span>
               </div>
               <div className="flex flex-col justify-center gap-2">
@@ -222,7 +222,7 @@ const ManageUsers = () => {
               </div>
             </div>
             <div>
-              <PieChart />
+              <PieChart users ={users} />
             </div>
           </div>
         </div>
@@ -257,32 +257,50 @@ const ManageUsers = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((user) => (
-                    <tr key={user?._id} className="text-base text-[14px] bg-[]">
-                      <td className="text-black font-semibold pt-3">
-                        {user?.username}
-                      </td>
-                      <td className="text-gray-600 pt-3">{user?.email}</td>
-                      <td className="text-gray-600 pt-3">{user?.phone}</td>
-                      <td className="text-gray-600 pt-3">{user?.experience}</td>
-                      <td className="text-gray-600 pt-3">{user?.education}</td>
-                      <td className="text-gray-600 pt-3">{user?.skills}</td>
-                      <td>
-                        <div className="flex items-center justify-start gap-2">
-                          <LiaUserEditSolid
-                            className="text-[16px] hover:text-[#19594D] cursor-pointer"
-                            title="Edit User"
-                            onClick={() => handleEditUser(user)}
-                          />
-                          <RiDeleteBin6Line
-                            className="text-[16px] hover:text-[#19594D] cursor-pointer"
-                            title="Delete User"
-                            onClick={() => handleDeleteUser(user?._id)}
-                          />
-                        </div>
+                  {users.length === 0 ? (
+                    <tr>
+                      <td
+                        colSpan="7"
+                        className="text-center text-gray-600 py-4"
+                      >
+                        No data to show
                       </td>
                     </tr>
-                  ))}
+                  ) : (
+                    users.map((user) => (
+                      <tr
+                        key={user?._id}
+                        className="text-base text-[14px] bg-[]"
+                      >
+                        <td className="text-black font-semibold pt-3">
+                          {user?.username}
+                        </td>
+                        <td className="text-gray-600 pt-3">{user?.email}</td>
+                        <td className="text-gray-600 pt-3">{user?.phone}</td>
+                        <td className="text-gray-600 pt-3">
+                          {user?.experience}
+                        </td>
+                        <td className="text-gray-600 pt-3">
+                          {user?.education}
+                        </td>
+                        <td className="text-gray-600 pt-3">{user?.skills}</td>
+                        <td>
+                          <div className="flex items-center justify-start gap-2">
+                            <LiaUserEditSolid
+                              className="text-[16px] hover:text-[#19594D] cursor-pointer"
+                              title="Edit User"
+                              onClick={() => handleEditUser(user)}
+                            />
+                            <RiDeleteBin6Line
+                              className="text-[16px] hover:text-[#19594D] cursor-pointer"
+                              title="Delete User"
+                              onClick={() => handleDeleteUser(user?._id)}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>
